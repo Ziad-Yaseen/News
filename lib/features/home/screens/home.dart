@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/constants/app_assets.dart';
+import 'package:news/features/home/widgets/app_bar_title.dart';
+import 'package:news/features/home/widgets/category_card.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -6,30 +9,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'News ',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              TextSpan(
-                text: 'Cloud',
-                style: TextStyle(
-                  color: Colors.amber,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-        ),
-        centerTitle: true,
+      appBar: AppBar(title: const AppBarTitle(), centerTitle: true),
+      body: Column(
+        children: [CategoryCard(asset: AppAssets.business, text: 'Business')],
       ),
     );
   }
