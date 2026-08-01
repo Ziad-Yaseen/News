@@ -6,6 +6,6 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Home());
+    return const MaterialApp(home: Home());
   }
 }
