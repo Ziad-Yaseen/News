@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:news/core/models/article_model.dart';
 import 'package:news/core/models/source_model.dart';
