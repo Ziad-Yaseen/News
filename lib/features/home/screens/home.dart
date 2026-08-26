@@ -17,7 +17,16 @@ class Home extends StatelessWidget {
           NewsListView(),
         ],
       ),
-      // const Column(children: [ ()]),
+      // body: Column(
+      //   children: [
+      //     ElevatedButton(
+      //       onPressed: () {
+      //         NewsService().GetNews();
+      //       },
+      //       child: Text('data'),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
