@@ -5,14 +5,12 @@ import 'package:news/core/models/source_model.dart';
 class NewsService {
   final Dio dio = Dio();
 
-  GetNews() async {
+  getNews() async {
     var response = await dio.get(
       'https://newsapi.org/v2/top-headlines?apiKey=47cb6e04fd0442c594a413c4dba8becb&coutry=eg&category=general',
     );
 
-    Map<String, dynamic> data = response.data;
-
-    List<dynamic> articles = data['articles'];
+    List<dynamic> articles = response.data['articles'];
     List<ArticleModel> articleList = [];
 
     for (var article in articles) {
@@ -32,7 +30,6 @@ class NewsService {
 
       articleList.add(articleModel);
     }
-
 
   }
 }
