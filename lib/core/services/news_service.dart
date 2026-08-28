@@ -5,9 +5,9 @@ import 'package:news/core/models/source_model.dart';
 class NewsService {
   final Dio dio = Dio();
 
-  getNews() async {
+  Future<List<ArticleModel>> getNews() async {
     var response = await dio.get(
-      'https://newsapi.org/v2/top-headlines?apiKey=47cb6e04fd0442c594a413c4dba8becb&coutry=eg&category=general',
+      'https://newsapi.org/v2/top-headlines?apiKey=47cb6e04fd0442c594a413c4dba8becb&coutry=us&category=general',
     );
 
     List<dynamic> articles = response.data['articles'];
@@ -19,7 +19,9 @@ class NewsService {
         title: article['title'] ?? 'No title available',
         description: article['description'] ?? 'No description available',
         url: article['url'] ?? 'No URL available',
-        image: article['urlToImage'] ?? 'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg',
+        image:
+            article['urlToImage'] ??
+            'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg',
         publishedAt: article['publishedAt'] ?? 'No publish date available',
         content: article['content'] ?? 'No content available',
         source: SourceModel(
@@ -31,5 +33,6 @@ class NewsService {
       articleList.add(articleModel);
     }
 
+    return articleList;
   }
 }
