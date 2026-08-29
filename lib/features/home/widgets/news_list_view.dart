@@ -12,6 +12,7 @@ class NewsListView extends StatefulWidget {
 
 class _NewsListViewState extends State<NewsListView> {
   List<ArticleModel> articles = [];
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -21,20 +22,46 @@ class _NewsListViewState extends State<NewsListView> {
 
   Future<void> getMyNews() async {
     articles = await NewsService().getNews();
-    setState(() {
-      
-    });
+    isLoading = false;
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      sliver: SliverList.separated(
-        itemCount: articles.length,
-        itemBuilder: (context, index) => NewsTile(article: articles[index]),
-        separatorBuilder: (context, index) => const SizedBox(height: 32),
-      ),
-    );
+    return isLoading
+        ? SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: .center,
+                children: [
+                  const CircularProgressIndicator(
+                    color: Colors.blue,
+                    strokeWidth: 4.0,
+                  ),
+
+                  const SizedBox(height: 20),
+                  Text(
+                    'Loading...',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey[700],
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        : SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            sliver: SliverList.separated(
+              itemCount: articles.length,
+              itemBuilder: (context, index) =>
+                  NewsTile(article: articles[index]),
+              separatorBuilder: (context, index) => const SizedBox(height: 32),
+            ),
+          );
   }
 }
