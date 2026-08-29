@@ -8,34 +8,15 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: CustomScrollView(
+    return Scaffold(
+      appBar: AppBar(title: const AppBarTitle(), centerTitle: true),
+      body: const CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [
-          SliverAppBar(
-            title: AppBarTitle(),
-            centerTitle: true,
-            backgroundColor: Colors.white,
-            pinned: true,
-            floating: true,
-            snap: true,
-
-            elevation: 0,
-          ),
           SliverToBoxAdapter(child: CategoriesListView()),
           NewsListViewBuilder(),
         ],
       ),
-      // body: Column(
-      //   children: [
-      //     ElevatedButton(
-      //       onPressed: () {
-      //         NewsService().GetNews();
-      //       },
-      //       child: Text('data'),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

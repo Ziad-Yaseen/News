@@ -54,6 +54,21 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
               ),
             ),
           )
+        : articles.isEmpty
+        ? SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(
+              child: Text(
+                'OOPS...\nThere was an error, try again later',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey[700],
+                  letterSpacing: 1.2,
+                ),
+              ),
+            ),
+          )
         : NewsListView(articles: articles);
   }
 }
