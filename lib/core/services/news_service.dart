@@ -8,7 +8,7 @@ class NewsService {
   Future<List<ArticleModel>> getNews() async {
     try {
       var response = await dio.get(
-        'https://newsapi.org/v2/top-headlines?apiKey=47cb6e04fd0442c594a413c4dba8becb&coutry=us&category=general',
+        'https://newsapi.org/v2/top-headlines?apiKey=47cb6e04fd0442c594a413c4dba8becb&country=us&category=general',
       );
       
       List<dynamic> articles = response.data['articles'];
@@ -36,7 +36,7 @@ class NewsService {
       
       return articleList;
     } catch (e) {
-      return [];
+      throw Exception(e.toString());
     }
   }
 }
