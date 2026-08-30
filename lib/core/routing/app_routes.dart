@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news/core/models/article_model.dart';
+import 'package:news/core/routing/route_names.dart';
+import 'package:news/features/article/screens/article_view.dart';
 import 'package:news/features/category/screens/category_view.dart';
 import 'package:news/features/home/screens/home.dart';
-
-class RouteNames {
-  static const String home = '/home';
-  static const String category = '/category';
-}
 
 class AppRoutes {
   static final GoRouter router = GoRouter(
@@ -38,6 +36,24 @@ class AppRoutes {
           return CustomTransitionPage(
             key: state.pageKey,
             child: CategoryView(category: categoryName, title: pageTitle),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+            transitionDuration: const Duration(milliseconds: 400),
+          );
+        },
+      ),
+
+      GoRoute(
+        path: RouteNames.article,
+        name: RouteNames.article,
+        pageBuilder: (context, state) {
+          final ArticleModel article = state.extra as ArticleModel;
+
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: ArticleView(article: article),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   return FadeTransition(opacity: animation, child: child);
