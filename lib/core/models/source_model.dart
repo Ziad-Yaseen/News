@@ -6,4 +6,11 @@ class SourceModel {
     required this.id,
     required this.name,
   });
+
+  factory SourceModel.fromJson(Map<String, dynamic> json) {
+    return SourceModel(
+      id: json['id'] ?? 'unknown_source',
+      name: json['name'] ?? 'Unknown Source',
+    );
+  }
 }

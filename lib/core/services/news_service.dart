@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news/core/constants/api_key.dart';
 import 'package:news/core/models/article_model.dart';
-import 'package:news/core/models/source_model.dart';
 
 class NewsService {
   final Dio dio = Dio();
@@ -16,27 +15,11 @@ class NewsService {
         'https://newsapi.org/v2/top-headlines',
         queryParameters: {'apiKey': ApiKey.apiKey, 'category': category},
       );
+      
       List<dynamic> articles = response.data['articles'];
 
-      List<ArticleModel> articleList = articles.map((article) {
-        return ArticleModel(
-          author: article['author'] ?? 'Unknown Author',
-          title: article['title'] ?? 'No title available',
-          description: article['description'] ?? 'No description available',
-          url: article['url'] ?? 'No URL available',
-          image:
-              article['urlToImage'] ??
-              'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg',
-          publishedAt: article['publishedAt'] ?? 'No publish date available',
-          content: article['content'] ?? 'No content available',
-          source: SourceModel(
-            id: article['source']['id'] ?? 'unknown_source',
-            name: article['source']['name'] ?? 'Unknown Source',
-          ),
-        );
-      }).toList();
-
-      return articleList;
+      return articles.map((article) => ArticleModel.fromJson(article)).toList();
+      
     } catch (e) {
       throw Exception(e.toString());
     }

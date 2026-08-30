@@ -21,4 +21,17 @@ class ArticleModel {
     required this.source,
   });
 
+  factory ArticleModel.fromJson(Map<String, dynamic> json) {
+    return ArticleModel(
+      author: json['author'] ?? 'Unknown Author',
+      title: json['title'] ?? 'No title available',
+      description: json['description'] ?? 'No description available',
+      url: json['url'] ?? 'No URL available',
+      image: json['urlToImage'] ??
+          'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg',
+      publishedAt: json['publishedAt'] ?? 'No publish date available',
+      content: json['content'] ?? 'No content available',
+      source: SourceModel.fromJson(json['source'] ?? {}), 
+    );
+  }
 }
