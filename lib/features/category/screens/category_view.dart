@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news/features/home/widgets/app_bar_title.dart';
+import 'package:news/features/home/widgets/news_list_view_builder.dart';
 
 class CategoryView extends StatelessWidget {
   const CategoryView({super.key});
@@ -15,7 +16,11 @@ class CategoryView extends StatelessWidget {
           onPressed: () => context.pop(),
         ),
       ),
-      body: const SizedBox(),
+      body: CustomScrollView(
+        slivers: [
+          NewsListViewBuilder()
+        ],
+      ),
     );
   }
 }
