@@ -33,9 +33,9 @@ The app talks to the [NewsAPI.org](https://newsapi.org) `top-headlines` endpoint
 
 <div align="center">
 
-| Home Feed | Category View | Loading / Error States |
+| Home Feed | Category View Business | Category View Entertainment | Category View Sports | Category View Technology | 
 |:---:|:---:|:---:|
-| <img src="screenshots/home.png" width="230"/> | <img src="screenshots/category.png" width="230"/> | <img src="screenshots/error.png" width="230"/> |
+| <img src="screenshots/home.png" width="230"/> | <img src="screenshots/business.png" width="230"/> | <img src="screenshots/entertainment.png" width="230"/> | <img src="screenshots/sports.png" width="230"/> | <img src="screenshots/technology.png" width="230"/> |
 
 </div>
 
