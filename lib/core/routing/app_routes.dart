@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news/core/routing/route_names.dart';
 import 'package:news/features/category/screens/category_view.dart';
 import 'package:news/features/home/screens/home.dart';
 
