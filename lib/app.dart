@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/routing/app_routes.dart';
 import 'package:news/features/home/screens/home.dart';
 
 class News extends StatelessWidget {
@@ -6,6 +7,9 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(debugShowCheckedModeBanner: false, home: Home());
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: AppRoutes.router,
+    );
   }
 }
