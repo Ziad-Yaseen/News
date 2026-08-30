@@ -33,8 +33,8 @@ The app talks to the [NewsAPI.org](https://newsapi.org) `top-headlines` endpoint
 
 <div align="center">
 
-| Home Feed | Category View Business | Category View Entertainment | Category View Sports | Category View Technology | 
-|:---:|:---:|:---:|:---:|:---:|
+|                   Home Feed                   |              Category View Business               |              Category View Entertainment               |              Category View Sports               |              Category View Technology               |
+| :-------------------------------------------: | :-----------------------------------------------: | :----------------------------------------------------: | :---------------------------------------------: | :-------------------------------------------------: |
 | <img src="screenshots/home.png" width="230"/> | <img src="screenshots/business.png" width="230"/> | <img src="screenshots/entertainment.png" width="230"/> | <img src="screenshots/sports.png" width="230"/> | <img src="screenshots/technology.png" width="230"/> |
 
 </div>
@@ -56,13 +56,13 @@ The app talks to the [NewsAPI.org](https://newsapi.org) `top-headlines` endpoint
 
 ## 🧱 Tech Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Flutter (Dart SDK `^3.12.2`) |
-| Networking | [`dio`](https://pub.dev/packages/dio) `^5.11.0` |
-| Routing | [`go_router`](https://pub.dev/packages/go_router) `^18.0.0` |
-| Icons | `cupertino_icons` `^1.0.8` |
-| Linting | `flutter_lints` `^6.0.0` |
+| Layer       | Choice                                                        |
+| ----------- | ------------------------------------------------------------- |
+| Framework   | Flutter (Dart SDK `^3.12.2`)                                  |
+| Networking  | [`dio`](https://pub.dev/packages/dio) `^5.11.0`               |
+| Routing     | [`go_router`](https://pub.dev/packages/go_router) `^18.0.0`   |
+| Icons       | `cupertino_icons` `^1.0.8`                                    |
+| Linting     | `flutter_lints` `^6.0.0`                                      |
 | Data Source | [NewsAPI.org](https://newsapi.org) — `top-headlines` endpoint |
 
 ---
@@ -126,12 +126,14 @@ lib/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Ziad-Yaseen/News.git
    cd News
    ```
 
 2. **Install dependencies**
+
    ```bash
    flutter pub get
    ```
@@ -139,6 +141,7 @@ lib/
 3. **Add your NewsAPI key**
 
    The app expects a git-ignored file at `lib/core/constants/api_key.dart`. Create it with the following content:
+
    ```dart
    class ApiKey {
      static const String apiKey = 'YOUR_NEWSAPI_KEY_HERE';
