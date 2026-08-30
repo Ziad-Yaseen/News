@@ -29,10 +29,15 @@ class AppRoutes {
         path: RouteNames.category,
         name: RouteNames.category,
         pageBuilder: (context, state) {
-          final String categoryName = state.extra as String;
+          final Map<String, String> extraData =
+              state.extra as Map<String, String>;
+
+          final String categoryName = extraData['category']!;
+          final String pageTitle = extraData['title']!;
+
           return CustomTransitionPage(
             key: state.pageKey,
-            child: CategoryView(category: categoryName),
+            child: CategoryView(category: categoryName, title: pageTitle),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
                   return FadeTransition(opacity: animation, child: child);

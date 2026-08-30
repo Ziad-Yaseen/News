@@ -10,8 +10,13 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          context.pushNamed(RouteNames.category, extra: category.categoryID),
+      onTap: () => context.pushNamed(
+        RouteNames.category,
+        extra: {
+          'category': category.categoryID,
+          'title': category.categoryName,
+        },
+      ),
       child: Container(
         width: 160,
         height: 85,
