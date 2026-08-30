@@ -17,10 +17,9 @@ class NewsService {
         queryParameters: {'apiKey': ApiKey.apiKey, 'category': category},
       );
       List<dynamic> articles = response.data['articles'];
-      List<ArticleModel> articleList = [];
 
-      for (var article in articles) {
-        ArticleModel articleModel = ArticleModel(
+      List<ArticleModel> articleList = articles.map((article) {
+        return ArticleModel(
           author: article['author'] ?? 'Unknown Author',
           title: article['title'] ?? 'No title available',
           description: article['description'] ?? 'No description available',
@@ -35,9 +34,7 @@ class NewsService {
             name: article['source']['name'] ?? 'Unknown Source',
           ),
         );
-
-        articleList.add(articleModel);
-      }
+      }).toList();
 
       return articleList;
     } catch (e) {
