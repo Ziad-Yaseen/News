@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news/core/components/primary_outlined_button.dart';
+import 'package:news/core/helpers/article_action_section.dart';
 import 'package:news/core/models/article_model.dart';
 import 'package:news/features/article/widgets/article_app_bar.dart';
 import 'package:news/features/article/widgets/article_data.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ArticleView extends StatelessWidget {
   const ArticleView({super.key, required this.article});
@@ -26,62 +25,7 @@ class ArticleView extends StatelessWidget {
             date: article.publishedAt,
             content: article.content,
           ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Container(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  const Spacer(),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: PrimaryOutlinedButton(
-                      onPressed: () async {
-                        final String urlString = article.url;
-                        final Uri? parsedUrl = Uri.tryParse(urlString);
-                        final bool isValidUrl =
-                            urlString != 'No URL available' &&
-                            parsedUrl != null &&
-                            parsedUrl.hasAbsolutePath;
-                        if (isValidUrl) {
-                          try {
-                            await launchUrl(
-                              parsedUrl,
-                              mode: LaunchMode.inAppWebView,
-                            );
-                          } catch (e) {
-                            if (context.mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    'An error occurred while trying to open the article.',
-                                  ),
-                                  backgroundColor: Colors.redAccent,
-                                ),
-                              );
-                            }
-                          }
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Sorry, this link is invalid or unavailable.',
-                              ),
-                              backgroundColor: Colors.redAccent,
-                              behavior: SnackBarBehavior.floating,
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                ],
-              ),
-            ),
-          ),
+          ArticleActionSection(url: article.url),
         ],
       ),
     );
