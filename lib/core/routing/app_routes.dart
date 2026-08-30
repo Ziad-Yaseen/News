@@ -24,17 +24,22 @@ class AppRoutes {
           transitionDuration: const Duration(milliseconds: 400),
         ),
       ),
+
       GoRoute(
         path: RouteNames.category,
         name: RouteNames.category,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const CategoryView(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-          transitionDuration: const Duration(milliseconds: 400),
-        ),
+        pageBuilder: (context, state) {
+          final String categoryName = state.extra as String;
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: CategoryView(category: categoryName),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+            transitionDuration: const Duration(milliseconds: 400),
+          );
+        },
       ),
     ],
   );

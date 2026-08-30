@@ -4,7 +4,9 @@ import 'package:news/features/home/widgets/app_bar_title.dart';
 import 'package:news/features/home/widgets/news_list_view_builder.dart';
 
 class CategoryView extends StatelessWidget {
-  const CategoryView({super.key});
+  const CategoryView({super.key, required this.category});
+
+  final String category;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class CategoryView extends StatelessWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          NewsListViewBuilder()
+          NewsListViewBuilder(category: category,)
         ],
       ),
     );

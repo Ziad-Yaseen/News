@@ -12,18 +12,37 @@ class CategoriesListView extends StatelessWidget {
       CategoryModel(
         categoryImage: AppAssets.business,
         categoryName: 'Business',
+        categoryID: 'business',
       ),
       CategoryModel(
         categoryImage: AppAssets.entertainment,
         categoryName: 'Entertainment',
+        categoryID: 'entertainment',
       ),
-      CategoryModel(categoryImage: AppAssets.general, categoryName: 'General'),
-      CategoryModel(categoryImage: AppAssets.health, categoryName: 'Health'),
-      CategoryModel(categoryImage: AppAssets.science, categoryName: 'Science'),
-      CategoryModel(categoryImage: AppAssets.sports, categoryName: 'Sports'),
+      CategoryModel(
+        categoryImage: AppAssets.general,
+        categoryName: 'General',
+        categoryID: 'general',
+      ),
+      CategoryModel(
+        categoryImage: AppAssets.health,
+        categoryName: 'Health',
+        categoryID: 'health',
+      ),
+      CategoryModel(
+        categoryImage: AppAssets.science,
+        categoryName: 'Science',
+        categoryID: 'science',
+      ),
+      CategoryModel(
+        categoryImage: AppAssets.sports,
+        categoryName: 'Sports',
+        categoryID: 'sports',
+      ),
       CategoryModel(
         categoryImage: AppAssets.technology,
         categoryName: 'Technology',
+        categoryID: 'technology',
       ),
     ];
     return SizedBox(
