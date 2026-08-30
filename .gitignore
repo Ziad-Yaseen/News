@@ -62,3 +62,7 @@ build/web/
 
 # macOS related (Desktop)
 /macos/
+
+
+# Api Key
+lib/core/constants/api_key.dart

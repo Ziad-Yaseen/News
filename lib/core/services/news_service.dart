@@ -1,19 +1,20 @@
 import 'package:dio/dio.dart';
+import 'package:news/core/constants/api_key.dart';
 import 'package:news/core/models/article_model.dart';
 import 'package:news/core/models/source_model.dart';
 
 class NewsService {
   final Dio dio = Dio();
 
-  Future<List<ArticleModel>> getNews() async {
+  Future<List<ArticleModel>> getTopHeadlines({required String category}) async {
     try {
       var response = await dio.get(
-        'https://newsapi.org/v2/top-headlines?apiKey=47cb6e04fd0442c594a413c4dba8becb&country=us&category=general',
+        'https://newsapi.org/v2/top-headlines',
+        queryParameters: {'apiKey': ApiKey.apiKey, 'category': category},
       );
-      
       List<dynamic> articles = response.data['articles'];
       List<ArticleModel> articleList = [];
-      
+
       for (var article in articles) {
         ArticleModel articleModel = ArticleModel(
           author: article['author'] ?? 'Unknown Author',
@@ -30,10 +31,10 @@ class NewsService {
             name: article['source']['name'] ?? 'Unknown Source',
           ),
         );
-      
+
         articleList.add(articleModel);
       }
-      
+
       return articleList;
     } catch (e) {
       throw Exception(e.toString());

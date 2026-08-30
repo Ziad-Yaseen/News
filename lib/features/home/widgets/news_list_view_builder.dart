@@ -15,13 +15,13 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
 
   @override
   void initState() {
-    _newsFuture = NewsService().getNews();
+    _newsFuture = NewsService().getTopHeadlines(category: 'general');
     super.initState();
   }
 
   void _fetchNews() {
     setState(() {
-      _newsFuture = NewsService().getNews();
+      _newsFuture = NewsService().getTopHeadlines(category: 'general');
     });
   }
 
