@@ -14,14 +14,11 @@ class CategoryView extends StatelessWidget {
       appBar: AppBar(
         title: const AppBarTitle(),
         centerTitle: true,
-        leading: BackButton(
-          onPressed: () => context.pop(),
-        ),
+        leading: BackButton(onPressed: () => context.pop()),
       ),
       body: CustomScrollView(
-        slivers: [
-          NewsListViewBuilder(category: category,)
-        ],
+        physics: const BouncingScrollPhysics(),
+        slivers: [NewsListViewBuilder(category: category)],
       ),
     );
   }
